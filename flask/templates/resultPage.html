@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/resultPage.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet" />
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="first">
+        <div class="firstheader">
+            <div class="firstheaderleft">
+               
+
+                <p>NewsBigData<br>Hackathon</p>
+            </div>
+            <div class="firstheadercenter">
+                <p>News Article &nbsp;&nbsp;&nbsp;&nbsp; Argolithm &nbsp;&nbsp;&nbsp;&nbsp; About us
+                    &nbsp;&nbsp;&nbsp;&nbsp; Portfolio </p>
+            </div>
+            <div class="firstheaderright">
+                <p>Login &nbsp;&nbsp; Join</p>
+            </div>
+        </div>
+        <div class="firstbody">
+            <div style="height: 15vh;"></div>
+            <div class="center">
+                <p>Pinocchio</p>
+            </div>
+            <div class="bottom" style="height: 15vh; display:flex;">
+                <p>여기다가 뭐라써야될지 모르겠지만 일단은 이런식을 채워서 나중에 확인해봄</p>
+            </div>
+            <div style="height: 5vh;"></div>
+            <form method="get" action="/urlCrawler">
+                <input type="text" name="urlInput" placeholder = {{url}}>
+            </form>
+        </div>
+        <div style="height: 12vh;"></div>
+        <div id = 'later' class="firstheader later" style="opacity: 0;">
+            <div class="firstheaderleft">
+                <p>NewsBigData<br>Hackathon</p>
+            </div>
+            <div class="firstheadercenter">
+                <p>News Article &nbsp;&nbsp;&nbsp;&nbsp; Argolithm &nbsp;&nbsp;&nbsp;&nbsp; About us
+                    &nbsp;&nbsp;&nbsp;&nbsp; Portfolio </p>
+            </div>
+            <div class="firstheaderright">
+                <p>Login &nbsp;&nbsp; Join</p>
+            </div>
+        </div>
+    </div>
+    <div class="second" style="display: flex;">
+        <div class="secondleft">
+            <div class="articleIn">
+                <div class="article">
+                    <span class="title" style="font-size: 30px; font-weight: bold;"> {{title}}</span>
+                    <br><br><div style="border: 1px solid #999999;"></div><br>
+                    {% for i in range(lenstr) %}
+                    {{data_str[i][:span_input[i][0]]}}<span
+                        class="blue">{{data_str[i][span_input[i][0]:span_input[i][1]+1]}}</span>{{data_str[i][span_input[i][1]+1:]}}.<br>
+                    {% endfor %}
+                </div>
+            </div>
+
+        </div>
+        <div class="secondright">
+            <div class="righttop">
+                <div class="rightcontent"><p>이 기사는 다른 기사보다 추측성 표현을<br><span id="a"></span> 사용합니다.</p></div>
+                <div class="chartbox" style="display: flex; padding: 10px;"></div>
+                
+                <div class="chart chart1">
+                    <div class="chart-bar" data-deg="50"></div>
+                  </div>
+                  <div class="chart chart2">
+                    <div class="chart-bar" data-deg="50"></div>
+                  </div>
+        </div>
+        <div style="display: flex;">
+        <div style="margin: 1vh 8vw; font-weight: bold;">지금 기사</div>
+        <div style="margin: 1vh 2.5vw; font-weight: bold;">동일한 주제의 기사</div>
+        </div>
+
+        <div class="rightbottom">동일한 주제의 다른 기사</div>
+
+
+            <div class="other">1. {{Other_title_list[0]}}</div>
+            <div class="other">2. {{Other_title_list[1]}}</div>
+            <div class="other">3. {{Other_title_list[2]}}</div>
+            <div class="other">4. {{Other_title_list[3]}}</div>
+            <div class="other">5. {{Other_title_list[4]}}</div>
+    </div>
+
+</body>
+
+<script>
+
+    var a = {{transparency_Ratio}};
+    var b = {{Other_transparency_Ratio}};
+    var _chart1 = document.getElementsByClassName('chart1')[0];
+    _chart1.style.background = 'conic-gradient(#512cda ' + (a / 100 * 360) + 'deg, #fbb871 0deg )';
+
+
+    var _chart2 = document.getElementsByClassName('chart2')[0];
+    _chart2.style.background = 'conic-gradient(#512cda ' + (b / 100 * 360) + 'deg, #fbb871 0deg )';
+
+    if(a > b){
+        var str = (a - b) + "% 많이";
+    }
+    else{
+        var str = (b - a) + "% 적게";
+    }
+    document.getElementById('a').innerHTML += str;
+</script>
+<script>
+function onLinkClick() {
+}
+
+    setTimeout(function() {
+        window.scrollTo({top:1000,behavior:"smooth"});
+        var later = document.getElementById('later');
+        later.style.opacity = '1';
+        later.style.transition = 'all 2s';
+}, 500);
+</script>
+
+</html>
