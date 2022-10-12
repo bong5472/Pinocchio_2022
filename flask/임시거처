@@ -1,5 +1,0 @@
-    <div>
-        {% for i in range(lenstr) %}
-                {{data_str[i][:span_input[i][0]]}}<span>{{data_str[i][span_input[i][0]:span_input[i][1]+1]}}</span>{{data_str[i][span_input[i][1]+1:]}}<br>
-        {% endfor %}
-    </div>
