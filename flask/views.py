@@ -15,7 +15,7 @@ def firstApi(crawl_title,crawl_article,crawl_date):
         date = datetime.datetime(datelist[0], datelist[1], datelist[2])
 
         # 2. 유사한 영역의 기사 5개 탐색(BigKinds API - POST METHOD)
-        SERVICE_KEY = "ce44aee0-5d38-483b-9d85-e54db6286df0"
+        SERVICE_KEY = "빅카인즈 API 키 "
         BASE_URL = "http://tools.kinds.or.kr:8888"
         # 2-1. KEY WORD FINDING
         response = requests.post(BASE_URL + "/keyword", data = json.dumps({"access_key": SERVICE_KEY,
